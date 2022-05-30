@@ -341,8 +341,8 @@ async def sentiment(text: str):
 
 @API.get("/graphs/tech-stack-by-role")
 async def tech_stack_graph():
-    mentors_df = pd.DataFrame(API.db.read("Mentors"))[["tech_stack", "name"]]
-    mentees_df = pd.DataFrame(API.db.read("Mentees"))[["tech_stack", "name"]]
+    mentors_df = pd.DataFrame(API.db.read("Mentors"))[["tech_stack", "first_name"]]
+    mentees_df = pd.DataFrame(API.db.read("Mentees"))[["tech_stack", "first_name"]]
     mentors_df["user_role"] = "Mentor"
     mentees_df["user_role"] = "Mentee"
     df = pd.concat([mentees_df, mentors_df], axis=0).reset_index(drop=True)
